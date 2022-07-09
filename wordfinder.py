@@ -1,4 +1,6 @@
-"""Word Finder: finds random words from a dictionary."""
+"""Word Finder: finds random words from a dictionary.
+    Dictionary file is words.txt
+"""
 
 from random import choice
 from readline import read_init_file
@@ -28,9 +30,12 @@ class WordFinder:
 
 
 class SpecialWordFinder(WordFinder):
-    """ Finds words withou # and removes blank lines"""
+    """ Special class - finds words withou # and removes blank lines
+        File with special words is words#.txt
+    """
 
     def read_file(self, file_path):
+        """ reads words from file, excluding blank lines and #words """
         self.input_file = open(file_path, "r")
         words = [ word for word in self.input_file if not word.startswith("#") and word.strip()]
         self.input_file.close()
